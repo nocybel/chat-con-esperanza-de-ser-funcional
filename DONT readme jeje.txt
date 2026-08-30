@@ -34,3 +34,31 @@ Diario coso de avances de proyecto :p
 		- Es buena idea tener un cliente integrado en el servidor?
 	
 	yei primer dia de proyecto, que emocion :3
+	
+
+29 - agosto - 2026
+	Valevale hoy regreso con más análisis/diseño uwu.
+	
+	Ya vi mas o menos lo que tiene que hacer el servidor y el usuario, da miedo D:
+	Se supone que después de analizar bien el problema se elige un paradigma de programación, pero rust es multiparadigma entonces ezpz (no se nada de rust)
+	Vale ahora si análisis real:
+		Ya vi que es buena idea separar cliente y servidor, entonces voy a hacer eso uwu
+		
+		Cliente:
+			Se tiene que comunicar con un servidor y tiene que procesar la informacion que recibe del servidor para que se vea bonita, y luego tiene que procesar la informacion dada por el usuario para que el servidor la entienda.
+			Entonces, debe tener un "modulo" de comunicacion (enviar y recibir Strings con el servidor), uno de procesamiento de datos (protocolo->info. legible y viceversa), uno de presentación (gui seguramente, pero estaría bien hacer algo en terminal por si no da tiempo para gui).
+			Quedaría algo así:
+				Antena <-> Procesador de datos <-> Presentación/UI
+		Servidor:
+			Suena dificil :C
+			Tengo que ver cómo hacerle para manejar chingo de usuarios, y poder llevar cuenta de quién mandó qué cosa y a quién(es) tengo que responder con otro mensaje.
+			Una idea que tengo es tener como una antenita por cada usuario. esa antenita va a ir acompañada con un procesador de mensajes para ver qué responder, y ese procesador va a poder tomar información del servidor directamente sin pedirsela a nadie. También estaría bien tener como una antena interna o algo así para repartir mensajes de una antenita a otra. Que sea algo como:
+				Usuario A manda un mensaje a una Sala 1 -> Antenita A recibe mensaje y lo manda al Procesador A -> Procesador A se da cuenta que es un mensaje, entonces lo vuelve un ROOM_TEXT_FROM y le da el mensaje a todas las antenitas -> las antenitas lo reciben, y lo pasan a sus respectivos procesadores -> cada procesador checa si debe mandar el mensaje o descartarlo porque el usuario no pertenece a la sala 1 -> los procesadores le dicen a las antenitas que manden el mensaje -> los usuarios reciben el mensaje de usuario A
+			
+			Aún no se cómo hacerlo, porque se me hace un poco rebuscado esta solución. Eventualmente tengo que encontrar una forma de filtrar mensajes y decidir a quién mandarselos.
+			
+			Podría tener una antena única a la que todos los usuarios se conectan, y solo se encarga de mandar mensajes a ciertas personas, mientras que cada usuario tiene un procesador chiquito para filtrar cada mensaje que le da la antena y para formatear mensajes que quieren enviar a la antena.
+			Podría tener procesadores chiquitos y antenitas para cada usuario y que el servidor sea una colección de usuarios con antenitas y procesadores chiquitos, como un "mini-server" para cada cliente conectado, y tener una vía de comunicación entre cada mini-server. (Creo que no suena mal eeh)
+			
+			enfin, mucho pensar, aun no se escribir nada sustancial en rust, no he tocado ni con un palo a gtk para interfaz gráfica, mi experiencia con servidores es hacer uno de minecraft con hamachi, y me enferme entonces me siento cansado todo el tiempo joer
+			pues ya ves
