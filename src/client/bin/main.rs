@@ -1,7 +1,7 @@
 mod procesador;
 
 fn main() {
-    procesador::recibir_mensaje(
+    let x = procesador::recibir_mensaje(
         &r#"{ "type": "USER_LIST",
               "users": { "Kimberly": "ACTIVE",
               "Luis": "BUSY",

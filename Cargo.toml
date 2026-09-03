@@ -3,6 +3,19 @@ name = "chat-con-esperanza-de-ser-funcional"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+name = "server"
+path = "src/server/bin/main.rs"
+
+[[bin]]
+name = "client"
+path = "src/client/bin/main.rs"
+
 [dependencies]
+# Serde es para json
 serde = "1.0.229"
 serde_json = "1.0"
+
+# Tokio es para websockets y programación asincrona
+tokio = { version = "1", features = ["full"] }
+tokio-tungstenite = "0.29"
