@@ -62,3 +62,25 @@ Diario coso de avances de proyecto :p
 			
 			enfin, mucho pensar, aun no se escribir nada sustancial en rust, no he tocado ni con un palo a gtk para interfaz gráfica, mi experiencia con servidores es hacer uno de minecraft con hamachi, y me enferme entonces me siento cansado todo el tiempo joer
 			pues ya ves
+
+03 - septiembre - 2026
+	5 días huh, estaba ocupadisimo jugando halo2 como para escribir tantito en este txt
+	Estemmm, estaba buscando como usar websockets asincronos en rust para el servidor, y encontre una pagina con un ejemplo super útil que casualmente es literalmente todo lo que tengo que hacer en el proyecto xd
+	Tiene un servidor con métodos para crear usuarios, salas, mandar mensajes globales, mensajes privados, mensajes a salas, y tal
+	No es solamente hacer copy-paste y ya esta porque tengo que modificarlo para que sirva con el protocolo que nos dio canek, además que todavía tengo que hacer algunos métodos que no vienen incluidos
+
+	En mi defensa, no busqué cómo hacer un servidor para chat asincrono con websockets en rust, solo resulta que el ejemplo que usaron para mostrar cómo usar websockets era un servidor y cliente de chat
+	Y cuando la vida te da limones, haz limonada (primera vez que uso esa frase toda gringa xd)
+
+	Mi idea original era poner usuarios y salas en diccionarios, y luego que cada sala tuviera una lista de usuarios
+	En el servidor ejemplo que encontré también pusieron a los usuarios en un diccionario e hicieron un diccionario de salas donde cada sala tiene un "vector" de usuarios (dice que los vectors son arreglos de tamaño dinámico que viven en el heap, que suena muchisimo a listas pero si les cambiaron el nombre seguro es por algo)
+	Casi lo mismo, entonces seguramente mi diseño estaba bien uwu
+
+	Lo que si no tenía idea es cómo funcionaban las conexiones por websocket. Como no entendía nada quería hacer una "clase" separada donde pudiera tantear con los websockets sin joder otra parte del programa. Así, la parte interna del programa servía bien desde el inicio y luego la parte de comunicación con la que pensé que tendría problemas podía existir aparte para ser modificada tanto como fuera necesario
+	Pero, creo que sobreestime mi habilidad de aprender lenguaje nuevo, aprender websockets desde 0 y aprender programacion concurrente desde 0 en 3 semanas mientras tengo también otras materias que idealmente me gustaría aprobar y mientras halo 2 está solito en mi computadora sin ser jugado (y dormir). Entonces pues si encontré algo que me es super útil, aunque no lo entienda del todo ahora mismo, debería usarlo y dejarme de mamadas "éticas" sobre si realmente es la mejor forma de aprender. Aprendí a meterle mods a minecraft viendo tutoriales sin entender lo que estaba haciendo y aprendí linux copiando comandos random de terminal, entonces seguro que también aprendo rust copiando codigo que me encontré por ahi
+
+	Tengo tarea para el lunes, y el viernes de la siguiente semana es primer examen de algebra lineal (y algebra no se me ha dado bien desde 1er semestre, entonceeees quiero estudiar uwu)
+
+	Todo eso para justificar mi conciencia de que copiar codigo es bueno y tal (danidev copiaba codigo no pasa na, con que no sea ia todo bien)
+
+	Repito que solo tengo que adaptar el código para que funcione con el protocolo que nos dieron, agregar métodos faltantes (que como todo es diccionario va a estar no muy dificil) y pues probar que funcione.
