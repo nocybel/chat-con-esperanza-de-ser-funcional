@@ -1,14 +1,14 @@
 use crate::servidor::usuario::Usuario;
 
 pub struct Sala<'a> {
-    nombre: &'a str,
-    miembros: Vec<&'a Usuario<'a>>,
-    invitados: Vec<&'a Usuario<'a>>,
+    nombre: String,
+    miembros: Vec<&'a str>,
+    invitados: Vec<&'a str>,
 }
 
 impl<'a> Sala<'a> {
     // Constructor por parámetros
-    pub fn new(creador: &'a Usuario<'a>, nombre: &'a str) -> Self {
+    pub fn new(creador: &'a str, nombre: String) -> Self {
         let mut sala = Sala {
             nombre: nombre,
             miembros: Vec::new(),
@@ -23,20 +23,24 @@ impl<'a> Sala<'a> {
     pub fn get_miembros(&self) -> Vec<&str> {
         let mut sujetos: Vec<&str> = Vec::new();
         for usuario in &self.miembros {
-            sujetos.push(usuario.get_nombre());
+            sujetos.push(usuario);
         }
         return sujetos;
     }
 
+    pub fn tiene_miembro(&self, miembro: &'a str) -> bool {
+        return self.miembros.contains(&miembro);
+    }
+
     // Agrega un usuario a la lista de invitados
-    pub fn invitar(&mut self, usuario: &'a Usuario<'a>) {
-        if !self.invitados.contains(&usuario) {
+    pub fn invitar(&mut self, usuario: &'a str) {
+        if !(self.invitados.contains(&usuario) || self.miembros.contains(&usuario)) {
             self.invitados.push(usuario);
         }
     }
 
     // Si un usuario está en la lista de invitados, lo agrega a la lista de miembros. Además, devuelve un número del 0 al 2 para representar el resultado
-    fn unirse_a_sala(&mut self, usuario: &'a Usuario<'a>) -> u8 {
+    fn unirse_a_sala(&mut self, usuario: &'a str) -> u8 {
         if self.miembros.contains(&usuario) {
             return 0; // Ya estaba en la sala
         }
@@ -49,7 +53,7 @@ impl<'a> Sala<'a> {
     }
 
     // Elimina a un usuario de la lista de miembros
-    pub fn salir_de_sala(&mut self, usuario: &'a Usuario<'a>) {
+    pub fn salir_de_sala(&mut self, usuario: &'a str) {
         self.miembros.retain(|&x| x != usuario);
     }
 

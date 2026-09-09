@@ -1,4 +1,4 @@
-#[derive(Copy, Clone)]
+//#[derive(Copy, Clone)]
 pub struct Usuario<'a> {
     nombre: &'a str,
     status: &'a str, // ACTIVE, AWAY, BUSY
