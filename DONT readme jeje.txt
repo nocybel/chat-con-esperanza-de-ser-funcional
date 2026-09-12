@@ -9,6 +9,7 @@ TODO ADIOS, DESDE 0
 			Websockets, conexiones y almacenamiento de usuarios
 	 2. Servidor<-muchos clientes (Clientes mandan cadenas de texto por websocket, servidor las imprime :D) [ASINCRONO]
 			Programacion asincrona, diccionario de usuarios con username y status
+			Ademas, el servidor y el cliente deben terminar de forma limpia
 	 3. Servidor y Cliente procesador (Cliente manda cadena de texto por websocket, servidor la desenvuelve y ejecuta funcion adecuada) [JSON CADENAS]
 			Hacer un desenvolvedor de json y envolvedor de json. Mandar json cadenas y descomponerlas de cada lado
 	 4. Cliente<-servidor (Servidor manda cadena de texto por websocket, cliente la imprime :D)
